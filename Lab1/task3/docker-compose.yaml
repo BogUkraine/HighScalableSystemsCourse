@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  node:
+    container_name: node-container-3
+    image: node:16
+    working_dir: /home/node/lab
+    ports:
+    - '${HOST_PORT}:${CONTAINER_PORT}'
+    - '${JSON_SERVER_HOST_PORT}:${JSON_SERVER_CONTAINER_PORT}'
+    volumes:
+    - ./resources/db.json:/home/node/lab/db.json
+    command: > 
+      bash -c 'npm init -y 
+      && npm i -g json-server 
+      && json-server --port ${JSON_SERVER_CONTAINER_PORT} --host 0.0.0.0 --watch /home/node/lab/db.json'

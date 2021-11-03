@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  node:
+    container_name: node-container-2
+    image: node:16
+    working_dir: /home/node/lab
+    ports:
+    - '${HOST_PORT}:${CONTAINER_PORT}'
+    volumes:
+    - ./resources/index.html:/home/node/lab/index.html
+    command: > 
+      bash -c 'npm init -y 
+      && npm i -g lite-server 
+      && lite-server'

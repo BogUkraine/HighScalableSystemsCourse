@@ -1,0 +1,85 @@
+{
+	"info": {
+		"_postman_id": "081dce7a-9b3c-4c0c-a8e8-d09c77b5e82f",
+		"name": "Lab1Task5",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get All Movies",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/db/movies",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"db",
+						"movies"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Movie by id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/db/movies/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"db",
+						"movies",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post Movie !Load Balancer set the value only for one \"db\"",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": 100,\n    \"description\": \"description by POST\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/db/movies",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"db",
+						"movies"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Lite-Server static",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": null
+			},
+			"response": []
+		}
+	]
+}
