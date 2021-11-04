@@ -67,6 +67,12 @@ Check availability of REST resources in container
 ## RUN docker-compose
 ```docker-compose --env-file ./.env up```
 
+### The main idea of a solution is to be able to up a container without rebuilding the image.
+### This way, you can handle json-server starting port by passing it throught env variables.
+### If you want to pass arguments to Dockerfile with env variables, it will be built once with
+### 'first build' variables.
+
+
 Task 4. Nginx + lite-server’s + JSON-server’s
 Prerequisites:
 Install docker and docker-compose.

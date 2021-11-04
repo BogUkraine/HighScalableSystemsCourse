@@ -10,25 +10,20 @@ services:
     - "8080:8080"
 
   lite-server-node:
-    image: node:16
+    build: ./lite-server
     working_dir: /home/node/lab
     volumes:
     - ./lite-server/index.html:/home/node/lab/index.html
-    expose: 
+    expose:
     - "${LITE_SERVER_EXPOSE_PORT}"
-    command: > 
-      bash -c 'npm init -y 
-      && npm i -g lite-server 
-      && lite-server'
 
   json-server-node:
-    image: node:16
+    build: 
+      context: ./json-server
+      args:
+        JSON_SERVER_PORT: ${JSON_SERVER_PORT}
     working_dir: /home/node/lab
     volumes:
     - ./json-server/db.json:/home/node/lab/db.json
-    expose: 
-    - "${JSON_SERVER_EXPOSE_PORT}"
-    command: > 
-      bash -c 'npm init -y
-      && npm i -g json-server 
-      && json-server --port ${JSON_SERVER_CONTAINER_PORT} --host 0.0.0.0 --watch /home/node/lab/db.json'
+    expose:
+    - "${JSON_SERVER_PORT}"
