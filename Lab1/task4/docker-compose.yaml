@@ -20,8 +20,8 @@ services:
   json-server-node:
     build: 
       context: ./json-server
-      args:
-        JSON_SERVER_PORT: ${JSON_SERVER_PORT}
+    environment:
+    - JSON_SERVER_PORT=${JSON_SERVER_PORT}
     working_dir: /home/node/lab
     volumes:
     - ./json-server/db.json:/home/node/lab/db.json

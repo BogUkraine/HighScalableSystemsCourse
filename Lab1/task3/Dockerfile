@@ -1,6 +1,5 @@
 FROM node:16
 
-COPY ./start-json-server.sh /home/node/lab/start-json-server.sh
 RUN npm i -g json-server
 
-CMD bash /home/node/lab/start-json-server.sh
+CMD json-server --port ${PORT} --host 0.0.0.0 --watch /home/node/lab/db.json

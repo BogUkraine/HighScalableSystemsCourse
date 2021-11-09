@@ -3,10 +3,9 @@ version: '3'
 services:
   node:
     container_name: node-container-3
-    build:
-      context: .
+    build: .
     environment:
-    - CONTAINER_PORT=${CONTAINER_PORT}
+    - PORT=${CONTAINER_PORT}
     working_dir: /home/node/lab
     ports:
     - '${HOST_PORT}:${CONTAINER_PORT}'
