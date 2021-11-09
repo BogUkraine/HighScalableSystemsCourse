@@ -1,0 +1,42 @@
+version: '3'
+
+services:
+  shard1svr1:
+    image: mongo:${MONGO_IMAGE_VERSION}
+    command: mongod --shardsvr --replSet ${SHARD1_CONTAINER_REPL_SET_NAME} --port ${SHARD1_CONTAINER_MONGO_PORT} --dbpath ${SHARD1_CONTAINER_DB_PATH}
+    expose:
+      - "${SHARD1_CONTAINER_MONGO_PORT}"
+    volumes:
+      - shard1svr1:${SHARD1_CONTAINER_DB_PATH}
+    networks:
+      - mongo_net
+
+  shard1svr2:
+    image: mongo:${MONGO_IMAGE_VERSION}
+    command: mongod --shardsvr --replSet ${SHARD1_CONTAINER_REPL_SET_NAME} --port ${SHARD1_CONTAINER_MONGO_PORT} --dbpath ${SHARD1_CONTAINER_DB_PATH}
+    expose:
+      - "${SHARD1_CONTAINER_MONGO_PORT}"
+    volumes:
+      - shard1svr2:${SHARD1_CONTAINER_DB_PATH}
+    networks:
+      - mongo_net
+
+  shard1svr3:
+    image: mongo:${MONGO_IMAGE_VERSION}
+    command: mongod --shardsvr --replSet ${SHARD1_CONTAINER_REPL_SET_NAME} --port ${SHARD1_CONTAINER_MONGO_PORT} --dbpath ${SHARD1_CONTAINER_DB_PATH}
+    expose:
+      - "${SHARD1_CONTAINER_MONGO_PORT}"
+    volumes:
+      - shard1svr3:${SHARD1_CONTAINER_DB_PATH}
+    networks:
+      - mongo_net
+
+networks:
+  mongo_net:
+    external: true
+
+
+volumes:
+  shard1svr1: {}
+  shard1svr2: {}
+  shard1svr3: {}

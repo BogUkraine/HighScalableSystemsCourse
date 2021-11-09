@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  mongo-express:
+    image: mongo-express
+    ports:
+      - "${MONGO_EXPRESS_PORT}:${MONGO_EXPRESS_PORT}"
+    environment:
+      - ME_CONFIG_MONGODB_PORT=${ROUTER_CONTAINER_MONGO_PORT}
+      - ME_CONFIG_MONGODB_SERVER=${ROUTER_CONTAINER_NAME}
+    networks:
+      - mongo_net
+
+networks:
+  mongo_net:
+    external: true
+    

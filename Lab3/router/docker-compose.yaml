@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  router:
+    image: mongo:${MONGO_IMAGE_VERSION}
+    command: mongos --configdb ${CONFIG_SERVER1_CONTAINER_REPL_SET_NAME}/${CONFIG_SERVER1_CONTAINER_NAME}:${CONFIG_SERVER1_CONTAINER_MONGO_PORT},${CONFIG_SERVER2_CONTAINER_NAME}:${CONFIG_SERVER2_CONTAINER_MONGO_PORT},${CONFIG_SERVER3_CONTAINER_NAME}:${CONFIG_SERVER3_CONTAINER_MONGO_PORT} --bind_ip 0.0.0.0 --port ${ROUTER_CONTAINER_MONGO_PORT}
+    ports:
+      - '${ROUTER_CONTAINER_MONGO_PORT}:${ROUTER_CONTAINER_MONGO_PORT}'
+    networks:
+      - mongo_net
+    volumes:
+      - ./imports:/imports
+      - ./scripts:/seeds
+
+networks:
+  mongo_net:
+    external: true
+    

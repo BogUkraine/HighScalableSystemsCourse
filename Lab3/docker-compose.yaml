@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  main:
+    container_name: mongo_main_container
+    image: mongo:${MONGO_IMAGE_VERSION}
+    ports:
+      - "${MAIN_MONGO_CONTAINER_HOST_PORT}:${MAIN_MONGO_CONTAINER_PORT}"
+    networks:
+      - con_net
+
+networks:
+  con_net:
+    name: mongo_net
+    driver: bridge
