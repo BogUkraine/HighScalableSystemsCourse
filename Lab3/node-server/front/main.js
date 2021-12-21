@@ -17,7 +17,7 @@ const draw = () => {
                 const x = Math.round(((borders.maxX - item.Lon) * canvas.width) / (borders.maxX - borders.minX))
                 const y = Math.round(canvas.height - (((borders.maxY - item.Lat) * canvas.height)/ (borders.maxY - borders.minY)))
                 
-                // if (index%3 === 0) {
+                if (index%3 === 0) {
                     console.log('x: ', x, ' y: ', y)
                     if (index === 0) { //start
                         ctx.fillRect(x-15,y-15,30,30)
@@ -33,7 +33,7 @@ const draw = () => {
 
                     ctx.fillText(`Time: ${new Date(item.timestamp).getTime() - new Date(self[0].timestamp).getTime()}`, x, y-10)
                     ctx.fillText(`Distance: ${item.distance}`, x, y+20)
-                // }
+                }
             })
         })
         .catch(err => console.log(err))
